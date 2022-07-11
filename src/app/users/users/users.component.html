@@ -1,0 +1,28 @@
+<div style="text-align: center;">
+  <button mat-raised-button (click)="onClickAddUser()">
+    Click here to add user
+  </button>
+</div>
+<br />
+<div id="tb">
+  <table border="1">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Company</th>
+      <th>DOB</th>
+      <!-- <th>Actions</th> -->
+    </tr>
+
+    <tr *ngFor="let user of users">
+      <td>{{ user?.fname }}</td>
+      <td>{{ user?.lname }}</td>
+      <td>{{ user?.email }}</td>
+      <td>{{ user?.phone }}</td>
+      <td>{{ user?.company }}</td>
+      <td>{{ user?.dob }}</td>
+    </tr>
+  </table>
+</div>

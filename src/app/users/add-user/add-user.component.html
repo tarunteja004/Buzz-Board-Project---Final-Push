@@ -1,0 +1,107 @@
+<form
+  [formGroup]="addUserForm"
+  (ngSubmit)="onSubmit(addUserForm.value)"
+  class="form"
+>
+  <!-- First Name -->
+  <mat-form-field class="form-element">
+    <input matInput placeholder="First name" formControlName="fname" />
+  </mat-form-field>
+  <!-- Last Name -->
+  <mat-form-field class="form-element">
+    <input matInput placeholder="Last name" formControlName="lname" />
+  </mat-form-field>
+  <!-- Email -->
+  <mat-form-field class="form-element">
+    <input matInput placeholder="Email address" formControlName="email" />
+    <mat-error
+      *ngIf="
+        !addUserForm.controls['email'].valid &&
+        addUserForm.controls['email'].touched
+      "
+    >
+      Invalid Email!
+    </mat-error>
+  </mat-form-field>
+  <!-- Phone Number -->
+  <mat-form-field class="form-element">
+    <input
+      type="tel"
+      matInput
+      placeholder="Phone Number"
+      pattern="+94[7-9]{2}-[0-9]{3}-[0-9]{4}"
+      formControlName="phone"
+    />
+    <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
+  </mat-form-field>
+  <!-- Company -->
+  <mat-form-field class="form-element">
+    <input matInput placeholder="Company name" formControlName="company" />
+  </mat-form-field>
+  <!-- Gender -->
+  <mat-form-field class="form-element">
+    <mat-label>Select Gender</mat-label>
+    <mat-select placeholder="Gender">
+      <mat-option value="male">Male</mat-option>
+      <mat-option value="male">Female</mat-option>
+      <mat-option value="male">Prefer not to say</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- DOB -->
+  <mat-form-field class="form-element">
+    <mat-label>DOB</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dob" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <!-- Description -->
+  <!-- <mat-form-field class="form-element">
+    <textarea
+      matInput
+      placeholder="Description"
+      matTextareaAutosize
+      matAutosizeMinRows="2"
+      matAutosizeMaxRows="5"
+      formControlName="description"
+    ></textarea>
+    <mat-error
+      *ngIf="
+        !addUserForm.controls['description'].valid &&
+        addUserForm.controls['description'].touched
+      "
+    >
+      Required field, must be between 5 and 10 characters.
+    </mat-error>
+  </mat-form-field> -->
+  <!-- Password -->
+  <mat-form-field class="form-element">
+    <mat-label>Enter your password</mat-label>
+    <input
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      formControlName="password"
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="form-element">
+    <button mat-raised-button matDialogClose="no">Cancel</button>
+    <button
+      style="margin-left: 8px;"
+      mat-raised-button
+      type="submit"
+      class="button"
+      [disabled]="!addUserForm.valid"
+    >
+      Register
+    </button>
+  </div>
+</form>

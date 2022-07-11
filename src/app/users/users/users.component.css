@@ -1,0 +1,13 @@
+#tb{
+  text-align: center;
+}
+
+table{
+  border-collapse: collapse;
+}
+
+th, td{
+  padding: 1em 3em;
+  text-align: center;
+  border-bottom: 1px solid rgb(53, 47, 47);
+}
